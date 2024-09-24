@@ -1,0 +1,14 @@
+version: '3'
+services:
+  xxl-job-admin:  # 确保这里的服务名与 Makefile 中的 SERVICE 变量一致
+    image: xuxueli/xxl-job-admin:2.4.1
+    container_name: xxl-job-admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - /tmp:/data/applogs
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://165.22.51.161:33060/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=letmein
+    restart: unless-stopped
